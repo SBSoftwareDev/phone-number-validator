@@ -24,7 +24,7 @@ The only magic here is the wizardy that takes this mess of symbols and parses it
 
         (\d{3}|[(]\d{3}[)](?!-))    --> Capture group that matches exactly 3 digits, OR matches an open round bracket, followed by exactly 3 digits, followed by a closing round bracket. If the brackets match, there is a negative lookahead disallowing a hypen after brackets. It just looks weird, doesn't it?
 
-        [- ]?\d{3}[- ]?\d{4}$/ --> After the first section, we can optionally match a hypen OR space in the same spot. Then we check for exactly three more digits, and repeat the same but check for four digits at the END.
+        [- ]?\d{3}[- ]?\d{4}$/      --> After the first section, we can optionally match a hypen OR space in the same spot. Then we check for exactly three more digits, and repeat the same but check for four digits at the END.
 
 ## Want to try it out?
 Here are three ways to run my program, in order of complexity:
