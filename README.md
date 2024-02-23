@@ -18,6 +18,15 @@ Oh my goodness, I had ***fun*** with this one. This regular expression is able t
 
 Only an area code of '1' is allowed, and only parentheses on the first three numbers. The area code and parentheses are optional of course. When first tackling this problem, I grouped the similar formats together. Starting with one set, I got a Regular Expression working and upgraded the RegEx one 'group' at a time. I actually think doing that helped me find the solution quicker than brute force.
 
+The only magic here is the wizardy that takes this mess of symbols and parses it effectively. I use 2 capture groups in this Regular Expression. Here is the breakdown:
+
+        /^(1?|1 ?)                  --> A capture group that optionally matches a '1' OR a '1' followed a single
+        whitespace, at the beginning of the string.
+
+        (\d{3}|[(]\d{3}[)](?!-))    --> Capture group that matches exactly 3 digits, OR matches an open round bracket, followed by exactly 3 digits, followed by a closing round bracket. If the brackets match, there is a negative lookahead disallowing a hypen after brackets. It just looks weird, doesn't it?
+
+        [- ]?\d{3}[- ]?\d{4}$/ --> After the first section, we can optionally match a hypen OR space in the same spot. Then we check for exactly three more digits, and repeat the same but check for four digits at the END.
+
 ## Want to try it out?
 Here are three ways to run my program, in order of complexity:
 
